@@ -1,1 +1,3 @@
-Command line reminder system using twilio messaging and dateparser
+#remindme
+
+Command line reminder system using twilio messaging and dateparser.
