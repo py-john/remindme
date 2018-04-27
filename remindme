@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+vf activate remindme
+python3 /Users/john/python/remindme/remindme.py $argv
