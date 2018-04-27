@@ -36,7 +36,7 @@ def check_reminders():
         if timestamp < datetime.now().isoformat():
             textmyself(reminder)
             sent_reminders.append(timestamp)
-            logger.info(f'Reminder sent: {reminder}')
+            #logger.info(f'Reminder sent: {reminder}')
     for r in sent_reminders:
         del reminders[r]
 
