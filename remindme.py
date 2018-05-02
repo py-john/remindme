@@ -13,6 +13,7 @@ CRON_CMD =  '. /Users/john/.bash_profile; checkreminders' + \
 
 
 def argv_is_valid():
+    """Check if CL arg format is valid, returns boolean."""
     if len(argv) < 4:
         return False
     if 'to' not in argv[2:]:
@@ -24,18 +25,20 @@ def argv_is_valid():
 
 
 def save_reminder():
+    """Split CL args and save reminder if it's in the future."""
     time_input, *reminder = ' '.join(argv[1:]).split(' to ')
     reminder_time = dateparser.parse(time_input)
     if reminder_time < datetime.now():
         print('Error: reminder time is in the past')
         raise SystemExit
     reminders[reminder_time.isoformat()] = ' to '.join(reminder)
-    with open(JSON_FILE, 'w') as f:
+    swith open(JSON_FILE, 'w') as f:
         json.dump(reminders, f, indent=4)
     set_crontab()
 
 
 def set_crontab():
+    """Set the cron job if it doesn't already exist."""
     cron = CronTab(user='john')
     for job in cron:
         if job.comment == 'check reminders':

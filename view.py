@@ -33,7 +33,7 @@ def print_reminders():
 
 
 def update_crontab():
-    """Remove cron job if the reminders dict is empty"""
+    """Remove cron job if the reminders dict is empty."""
     if not reminders:
         cron = CronTab(user='john')
         cron.remove_all(comment='check reminders')
@@ -45,7 +45,7 @@ def update_crontab():
 
 
 def get_index():
-    """Get user input for index of reminder to be removed"""
+    """Get user input for index of reminder to be removed."""
     while True:
         try:
             choice = int(input('Number of reminder to delete (0 to go back): '))
@@ -58,7 +58,7 @@ def get_index():
 
 
 def delete_reminder():
-    """Removed the chosen reminder from the dict after confirming"""
+    """Removed the chosen reminder from the dict after confirming."""
     index = get_index()
     if index == 0:
         return None
@@ -74,13 +74,13 @@ def delete_reminder():
 
 
 def save_reminders():
-    """Save the reminders dict to json file"""
+    """Save the reminders dict to json file."""
     with open(JSON_FILE, 'w') as f:
         json.dump(reminders, f)
 
 
 def run_menu():
-    """Display the reminders and prompt for user selected option"""
+    """Display the reminders and prompt for user selected option."""
     if not reminders:
         print('\n--No Reminders--\n')
         raise SystemExit
@@ -98,7 +98,7 @@ def run_menu():
 
 
 def main():
-    """Load reminders from json file or exit if no file found"""
+    """Load reminders from json file or exit if no file found."""
     global reminders
     try:
         with open(JSON_FILE, 'r') as f:
