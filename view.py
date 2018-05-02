@@ -25,7 +25,7 @@ def force_input(prompt, options):
 
 
 def print_reminders():
-    """Print a numbered list of the reminders with formated timestamps."""
+    """Print a numbered list of reminders with formated timestamps."""
     print()
     for index, iso_str in enumerate(sorted(reminders), 1):
         print(f'{index}) {format_timestamp(iso_str)} -> {reminders[iso_str]}')
@@ -74,13 +74,13 @@ def delete_reminder():
 
 
 def save_reminders():
-    """Save the reminders dict to json file."""
+    """Save reminders dict to json file."""
     with open(JSON_FILE, 'w') as f:
         json.dump(reminders, f)
 
 
 def run_menu():
-    """Display the reminders and prompt for user selected option."""
+    """Display reminders and prompt for user selected option."""
     if not reminders:
         print('\n--No Reminders--\n')
         raise SystemExit
