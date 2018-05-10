@@ -9,7 +9,7 @@ from datetime import datetime
 PACKAGE_DIR = os.path.dirname(os.path.realpath(__file__))
 JSON_FILE = f'{PACKAGE_DIR}/reminders.json'
 CRON_CMD =  '. /Users/john/.bash_profile; checkreminders' + \
-		    f' >> {PACKAGE_DIR}/crontab.log 2>&1'
+            f' >> {PACKAGE_DIR}/crontab.log 2>&1'
 
 
 def argv_is_valid():
@@ -32,7 +32,7 @@ def save_reminder():
         print('Error: reminder time is in the past')
         raise SystemExit
     reminders[reminder_time.isoformat()] = ' to '.join(reminder)
-    swith open(JSON_FILE, 'w') as f:
+    with open(JSON_FILE, 'w') as f:
         json.dump(reminders, f, indent=4)
     set_crontab()
 
