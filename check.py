@@ -2,20 +2,12 @@
 import os
 import json
 from datetime import datetime
-# import logging
 
 from crontab import CronTab
 from mysms import textmyself
 
 PACKAGE_DIR = os.path.dirname(os.path.realpath(__file__))
 JSON_FILE = f'{PACKAGE_DIR}/reminders.json'
-
-# logging.basicConfig(filename=f'{PACKAGE_DIR}/log.txt',
-#                    format='%(asctime)s: %(message)s',
-#                    datefmt='%F %T')
-#
-# logger = logging.getLogger(__name__)
-# logger.setLevel('INFO')
 
 
 def remove_cronjob():
@@ -36,7 +28,6 @@ def check_reminders(reminders):
         if timestamp < datetime.now().isoformat():
             textmyself(reminder)
             sent_reminders.append(timestamp)
-            # logger.info(f'Reminder sent: {reminder}')
     for r in sent_reminders:
         del reminders[r]
 
