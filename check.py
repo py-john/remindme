@@ -25,7 +25,7 @@ def remove_cronjob():
     cron.write()
 
 
-def check_reminders():
+def check_reminders(reminders):
     """Delete and send text for any reminders that are in the past.
     
     Update the json file with current reminders after all the past
@@ -49,8 +49,6 @@ def check_reminders():
 
 def main():
     """Run the reminder check after reading in the saved json data."""
-    global reminders
-
     try:
         with open(JSON_FILE, 'r') as f:
             reminders = json.load(f)
@@ -58,7 +56,7 @@ def main():
         print('reminders.json not found')
         raise SystemExit
 
-    check_reminders()
+    check_reminders(reminders)
 
 
 if __name__ == '__main__':
