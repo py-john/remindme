@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os
 import json
-import logging
 from datetime import datetime
+# import logging
 
 from crontab import CronTab
 from mysms import textmyself
@@ -10,12 +10,12 @@ from mysms import textmyself
 PACKAGE_DIR = os.path.dirname(os.path.realpath(__file__))
 JSON_FILE = f'{PACKAGE_DIR}/reminders.json'
 
-#logging.basicConfig(filename=f'{PACKAGE_DIR}/log.txt',
+# logging.basicConfig(filename=f'{PACKAGE_DIR}/log.txt',
 #                    format='%(asctime)s: %(message)s',
 #                    datefmt='%F %T')
 #
-#logger = logging.getLogger(__name__)
-#logger.setLevel('INFO')
+# logger = logging.getLogger(__name__)
+# logger.setLevel('INFO')
 
 
 def remove_cronjob():
@@ -27,7 +27,7 @@ def remove_cronjob():
 
 def check_reminders(reminders):
     """Delete and send text for any reminders that are in the past.
-    
+
     Update the json file with current reminders after all the past
     reminders are sent and deleted.
     """
@@ -36,7 +36,7 @@ def check_reminders(reminders):
         if timestamp < datetime.now().isoformat():
             textmyself(reminder)
             sent_reminders.append(timestamp)
-            #logger.info(f'Reminder sent: {reminder}')
+            # logger.info(f'Reminder sent: {reminder}')
     for r in sent_reminders:
         del reminders[r]
 

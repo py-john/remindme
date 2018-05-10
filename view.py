@@ -11,7 +11,7 @@ JSON_FILE = f'{PACKAGE_DIR}/reminders.json'
 
 def format_timestamp(iso_str):
     """Return formatted timestamp from iso timestamp input."""
-    dt = arrow.get(iso_str)                
+    dt = arrow.get(iso_str)
     return dt.format('ddd MM/DD/YYYY - hh:mm A')
 
 
@@ -48,7 +48,8 @@ def get_index():
     """Get user input for index of reminder to be removed."""
     while True:
         try:
-            choice = int(input('Number of reminder to delete (0 to go back): '))
+            choice = int(input(
+                        'Number of reminder to delete (0 to go back): '))
         except ValueError:
             continue
         if 0 <= choice <= len(reminders):
@@ -65,7 +66,7 @@ def delete_reminder():
     key = sorted(reminders)[index-1]
     time_str = format_timestamp(key)
     prompt = f'Delete {time_str} - {reminders[key]}? [y/n]: '
-    choice = force_input(prompt, {'y', 'yes', 'n', 'no'})    
+    choice = force_input(prompt, {'y', 'yes', 'n', 'no'})
     if choice in {'y', 'yes'}:
         del(reminders[key])
         print("Deleted")
