@@ -1,14 +1,14 @@
-#!/usr/bin/env python3
 import os
 import json
-import dateparser
 from sys import argv
-from crontab import CronTab
 from datetime import datetime
+
+import dateparser
+from crontab import CronTab
 
 PACKAGE_DIR = os.path.dirname(os.path.realpath(__file__))
 JSON_FILE = f'{PACKAGE_DIR}/reminders.json'
-CRON_CMD = ('. /Users/john/.bash_profile; checkreminders',
+CRON_CMD = ('. /Users/john/.bash_profile; checkreminders'
             f' >> {PACKAGE_DIR}/crontab.log 2>&1')
 
 
