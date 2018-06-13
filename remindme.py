@@ -1,3 +1,20 @@
+"""remindme.py:
+
+Terminal reminder system using twilio.
+
+Called from the remindme executable file with the arguments being 
+a readable time frame, the word 'to', and the reminder itself:
+
+remindme [time frame] to [reminder]
+
+Examples:
+    
+    remindme in 30 minutes to call mark
+    remindme on march 5th at 9:30am to go to the doctor appointment
+
+Reminders are saved to a json filed and check automatically via cron.
+
+"""
 import os
 import json
 from sys import argv
