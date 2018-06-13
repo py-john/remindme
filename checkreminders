@@ -1,4 +1,6 @@
 #!/usr/bin/env fish
+# Command that cron runs automatically to check
+# if any reminders have passed and need to be sent.
 
 vf activate remindme
 python3 /Users/john/python/remindme/check.py
