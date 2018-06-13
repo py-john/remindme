@@ -1,0 +1,5 @@
+#!/usr/bin/env fish
+# This executable file is for easy calling of the edit.py file
+
+vf activate remindme
+python3 /Users/john/python/remindme/edit.py
